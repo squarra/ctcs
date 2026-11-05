@@ -25,6 +25,7 @@ def main() -> None:
     h, w = arena.walls.shape
     screen = pygame.display.set_mode((w * CELL, h * CELL))
     clock = pygame.time.Clock()
+    font = pygame.font.SysFont(None, 24)
 
     running = True
     while running:
@@ -37,6 +38,7 @@ def main() -> None:
             arena.step(actions)
 
         draw(screen, arena)
+        screen.blit(font.render(f"{args.evader} vs {args.pursuer}", True, "black", "white"), (4, 4))
         pygame.display.flip()
         clock.tick(args.fps)
 
